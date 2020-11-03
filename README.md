@@ -66,7 +66,7 @@
 
 ### Association
 
-- belongs-to:purchase
+- belongs_to:purchase
 
 ## purchases テーブル
 
@@ -78,7 +78,7 @@
 ### Association
 
 - belongs_to:user
-- belongs_tp:item
+- belongs_to:item
 - has_one:address
 
 
