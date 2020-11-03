@@ -18,7 +18,6 @@
 - has_many :items
 - has_many :comments
 - has_many :purchases
-- has_one :credit_card
 
 ## items テーブル
 
@@ -27,7 +26,6 @@
 | user             | references | foreign_key: true |
 | name             | string     | null: false       |
 | description      | text       | null: false       |
-| images_id        | integer    | null: false       |
 | category_id      | integer    | null: false       |
 | condition_id     | integer    | null: false       |
 | postage_payer_id | integer    | null: false       |
@@ -39,7 +37,6 @@
 
 - has_many :comments
 - belongs_to :user
-- has_many :images
 - has_one :purchase
 
 ## comments テーブル
@@ -83,28 +80,5 @@
 - belongs_tp:item
 - belongs_to:address
 
-## images table
 
-| Column | Type       | Options           |
-|--------|------------|-------------------|
-| image  | string     | null: false       |
-| item   | references | foreign_key: true |
-
-### Association
-
-- belongs_to: item
-
-## credit_cards テーブル
-
-| Column      | Type       | Options           |
-| ----------- | ---------- | ----------------- |
-| card_number | string     | null: false       |
-| card_year   | integer    | null: false       |
-| card_month  | integer    | null: false       |
-| card_pass   | integer    | null: false       |
-| user        | references | foreign_key: true |
-
-### Association
-
-- belongs_to:user
 
