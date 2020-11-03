@@ -59,7 +59,8 @@
 | post_code     | string     | null: false       |
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
-| building_name | string     |                   |
+| block         | string     | null: false       |
+| building_name | string     | null: false       |
 | phone_number  | string     | null: false       |
 | purchase      | references | foreign_key: true |
 
