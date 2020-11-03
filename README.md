@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| nickname        | string | null: false |
-| email           | string | null: false |
-| password        | string | null: false |
-| last_name       | string | null: false |
-| first_name      | string | null: false |
-| last_name_kana  | string | null: false |
-| first_name_kana | string | null: false |
-| birth_date      | date   | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| birth_date         | date   | null: false |
 
 ### Association
 
@@ -60,13 +60,13 @@
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
 | block         | string     | null: false       |
-| building_name | string     | null: false       |
+| building_name | string     |                   |
 | phone_number  | string     | null: false       |
 | purchase      | references | foreign_key: true |
 
 ### Association
 
-- has_one :purchase
+- belongs-to:purchase
 
 ## purchases テーブル
 
@@ -79,7 +79,7 @@
 
 - belongs_to:user
 - belongs_tp:item
-- belongs_to:address
+- has_one:address
 
 
 
