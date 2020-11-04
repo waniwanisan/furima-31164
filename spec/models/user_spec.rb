@@ -6,7 +6,9 @@ describe User do
 
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
-      it "nickname,email,password,password_confirmation,last_name,firstname,last_name_kana,first_name_kana,birth_dateが存在すれば登録できる" do
+      it "nickname,email,password,password_confirmation,last_name,first_name,last_name_kana,first_name_kana,birth_dateが存在すれば登録できる" do
+        @user.password = "abcd12"
+        @user.password_confirmation = "abcd12"
         expect(@user).to be_valid
       end
 
@@ -31,10 +33,11 @@ describe User do
       end
       it "重複したemailが存在する場合登録できない" do
         @user.save
-        another_user = FactoryBot.build(:user)
-        another_user.email = @user.email
-        another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        another_user = FactoryBot.build(:user, email: @user.email)
+        @user.email = "aaaaaa@"
+        another_user.email = "aaaaaa@"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email has already been taken")
       end
       it "passwordが空では登録できない" do
         @user.password = ""

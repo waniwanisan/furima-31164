@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :password, presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}\z/, message: "Include both letters and numbers" }
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "has already been taken" }
   validates :nickname, presence: true
   validates :last_name, presence: true, format: { with: /\A[一-龥ぁ-ん]/, message: "Full-width characters"}
   validates :first_name, presence: true, format: { with: /\A[一-龥ぁ-ん]/, message: "Full-width characters"}
