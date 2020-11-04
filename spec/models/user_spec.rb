@@ -131,12 +131,13 @@ describe User do
         expect(@user.errors.full_messages).to include("Last name Full-width characters")
       end
 
+      it "emailに@がないと登録できない" do
+        @user.email = "kkkkkkkkk"
+        @user.valid?
+        expect(@user.errors.full_messages)
+      end
 
 
-
-
-
-      
     end
   end
 end
