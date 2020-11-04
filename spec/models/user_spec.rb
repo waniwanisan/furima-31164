@@ -31,7 +31,7 @@ describe User do
       end
       it "重複したemailが存在する場合登録できない" do
         @user.save
-        another_user = FactoryBot.build(:user, email: @user.email)
+        another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
@@ -115,6 +115,21 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana Full-width katakana characters")
       end
+
+      it "first_nameが全角でないと登録できない" do
+        @user.first_name = 'ｾﾞﾝｶｸ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name Full-width characters")
+      end
+
+      it "last_nameが全角でないと登録できない" do
+        @user.last_name = 'ｱｲｳｴｵ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name Full-width characters")
+      end
+
+
+
 
 
 
