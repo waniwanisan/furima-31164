@@ -60,3 +60,7 @@ gem 'faker'
 gem 'gimei'
 gem 'pry-rails'
 
+group :development do
+  gem 'rubocop', require: false
+end
+
