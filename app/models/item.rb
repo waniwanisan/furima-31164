@@ -17,26 +17,26 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to :user, optional: true
-  validates :prefecture, presence: true
+  validates :prefecture, presence: true, numericality: { other_than: 0 } 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to :user, optional: true
-  validates :category, presence: true
+  validates :category, presence: true, numericality: { other_than: 0 } 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :condition
   belongs_to :user, optional: true
-  validates :condition, presence: true
+  validates :condition, presence: true, numericality: { other_than: 0 } 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :postage_payer
   belongs_to :user, optional: true
-  validates :postage_payer, presence: true
+  validates :postage_payer, presence: true, numericality: { other_than: 0 } 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :handling_time
   belongs_to :user, optional: true
-  validates :handling_time, presence: true
+  validates :handling_time, presence: true, numericality: { other_than: 0 } 
 
 end
