@@ -6,7 +6,8 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :price, presence: true    
+  validates :price, presence: true, numericality: { other_than: 0, message: "Half-width number" }, format: { with: /\A[0-9]+\z/ }
+  validates :price, presence: true, format: { with: /\A[3-9][0-9]{2}|[1-9][0-9]{3,6}\z/, message: "Out of setting range" }
   validates :image, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
