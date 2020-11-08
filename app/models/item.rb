@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_many :comments
-  belongs_to :user
+  belongs_to :user, optional: true
   has_one :purchase
   has_one_attached :image
 
@@ -13,28 +13,26 @@ class Item < ApplicationRecord
   end
 
     extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :prefecture
-    belongs_to :user, optional: true
-    validates :prefecture_id, presence: true, numericality: { other_than: 0 } 
+    with_options presence: true, numericality: { other_than: 0 } do
 
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :category
-    belongs_to :user, optional: true
-    validates :category_id, presence: true, numericality: { other_than: 0 } 
+      belongs_to_active_hash :prefecture
+      validates :prefecture_id
 
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :condition
-    belongs_to :user, optional: true
-    validates :condition_id, presence: true, numericality: { other_than: 0 } 
+    
+      belongs_to_active_hash :category
+      validates :category_id 
 
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :postage_payer
-    belongs_to :user, optional: true
-    validates :postage_payer_id, presence: true, numericality: { other_than: 0 } 
+    
+      belongs_to_active_hash :condition
+      validates :condition_id 
 
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :handling_time
-    belongs_to :user, optional: true
-    validates :handling_time_id, presence: true, numericality: { other_than: 0 } 
+    
+      belongs_to_active_hash :postage_payer
+      validates :postage_payer_id 
+
+    
+      belongs_to_active_hash :handling_time
+      validates :handling_time_id 
+    end
 
 end
