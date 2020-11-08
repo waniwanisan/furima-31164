@@ -13,25 +13,16 @@ class Item < ApplicationRecord
   end
 
     extend ActiveHash::Associations::ActiveRecordExtensions
+    belongs_to_active_hash :prefecture
+    belongs_to_active_hash :category
+    belongs_to_active_hash :condition
+    belongs_to_active_hash :postage_payer
+    belongs_to_active_hash :handling_time
     with_options presence: true, numericality: { other_than: 0 } do
-
-      belongs_to_active_hash :prefecture
       validates :prefecture_id
-
-    
-      belongs_to_active_hash :category
       validates :category_id 
-
-    
-      belongs_to_active_hash :condition
       validates :condition_id 
-
-    
-      belongs_to_active_hash :postage_payer
       validates :postage_payer_id 
-
-    
-      belongs_to_active_hash :handling_time
       validates :handling_time_id 
     end
 

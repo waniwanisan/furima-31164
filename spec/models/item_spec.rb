@@ -7,8 +7,6 @@ RSpec.describe Item, type: :model do
   describe '商品出品' do
     context "商品が出品できる時" do
       it "全てのデータが存在すれば出品できる" do
-        @item.name = "aaaaaa"
-        @item.description = "bbbbbbb"
         expect(@item).to be_valid
       end
     end
