@@ -68,6 +68,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price Out of setting range") 
       end
 
+      it "画像がないと出品できない" do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank") 
+      end
+
     end
   end
 end
