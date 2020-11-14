@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe OrderForm, type: :model do
   describe '購入情報の保存' do
     before do
-      @order_form = FactoryBot.build(:order_form)
+      buyer = FactoryBot.create(:user)
+      seller = FactoryBot.create(:user)
+      item = FactoryBot.build(:item, user_id: seller.id)
+      item.save
+      @order_form = FactoryBot.build(:order_form, user_id:buyer.id , item_id: item.id)
     end
     context '購入がうまくいくとき' do
       it 'すべての値とtokenが正しく入力されていれば保存できること' do
@@ -11,7 +15,6 @@ RSpec.describe OrderForm, type: :model do
       end
       it 'building_nameは空でも保存できること' do
         @order_form.building_name = nil
-        @order_form.valid?
         expect(@order_form).to be_valid
       end
     end
