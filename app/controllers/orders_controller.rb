@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def index
     @item = Item.new
     @item = Item.find(params[:item_id])
