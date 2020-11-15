@@ -4,6 +4,11 @@ class OrdersController < ApplicationController
   def index
     @items = Item.new
     @order_form = OrderForm.new
+    if @item.user == current_user || @item.purchase.present?
+      redirect_to root_path
+    else
+      render "index"
+    end
   end
 
   def create
